@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:routing_g9/services/route_service/app_route_name.dart';
+import 'package:routing_g9/services/route_service/app_route_observer.dart';
 import 'package:routing_g9/services/route_service/routes.dart';
 
 class App extends StatelessWidget {
@@ -7,9 +8,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       initialRoute: AppRouteNames.homePage,
       onGenerateRoute: AppRoutes.onGenerateRoute,
+      navigatorObservers: [
+       AppRouteObserver(),
+      ],
     );
   }
 }
+
+
