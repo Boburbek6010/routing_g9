@@ -1,8 +1,25 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:routing_g9/services/route_service/app_route_name.dart';
 
-class HomePage extends StatelessWidget{
+import '../services/route_service/observe_aware.dart';
+
+class HomePage extends StatefulWidget{
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>with RouteAware{
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    ObserveAware.routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +42,30 @@ class HomePage extends StatelessWidget{
         ),
       ),
     );
+  }
+
+  @override
+  void didPop() {
+    log("HomePage: didPop");
+    super.didPop();
+  }
+
+  @override
+  void didPush() {
+    log("HomePage: didPush");
+    super.didPush();
+  }
+
+  @override
+  void didPopNext() {
+    log("HomePage: didPopNext");
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    log("HomePage: didPushNext");
+    super.didPushNext();
   }
 }
 

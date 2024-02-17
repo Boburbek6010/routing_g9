@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       initialRoute: AppRouteNames.homePage,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       navigatorObservers: [
-       AppRouteObserver(),
+        AppRouteObserver(),
       ],
     );
   }
